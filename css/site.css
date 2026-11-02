@@ -410,3 +410,4 @@ body[data-tone="light"] .rail{--rt:var(--c-ink);--rl:var(--c-line-l)}
 /* hover preview off (toggle SHOW_PREVIEW in build.js) */
 .ch2--nopreview .ch2__preview{display:none!important}
 @media (min-width:768px){.ch2--nopreview .ch2__note,.ch2--nopreview .ch2__nda{left:calc(var(--rail) + var(--gx))}}
+@media (min-width:768px){.case__media--tall img{max-height:900px;width:100%;object-fit:contain;object-position:left top}}
