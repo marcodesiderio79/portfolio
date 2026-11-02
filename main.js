@@ -9,7 +9,7 @@ d.querySelectorAll('[data-rise],[data-split],.worklist,.explist,.ch1__stats').fo
 d.querySelectorAll('.ch1__stats li').forEach((li,i)=>li.querySelector('.ln>span')?.style.setProperty('--d',i*110));
 // smooth scroll
 let lenis=null;
-if(!rm&&window.Lenis){lenis=new Lenis({lerp:.1,autoRaf:!G});if(G){lenis.on('scroll',()=>ST&&ST.update());G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}}
+if(!rm&&window.Lenis){lenis=new Lenis({lerp:.1,wheelMultiplier:3.5,autoRaf:!G});if(G){lenis.on('scroll',()=>ST&&ST.update());G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}}
 const scrollToY=y=>lenis?lenis.scrollTo(y,{duration:1.4}):scrollTo({top:y,behavior:rm?'auto':'smooth'});
 // reveals
 const targets=[...d.querySelectorAll('[data-rise],[data-split],.wipe,.worklist,.explist')].filter(e=>!e.closest('.hero'));
@@ -57,6 +57,11 @@ if(story&&G&&ST){const mm=G.matchMedia();
 const goTo=el=>{if(!el)return;if(hst&&story.contains(el)){const p=el.closest('.panel')||el;const L=p.offsetLeft;scrollToY(hst.start+(L<=hA?L:L+hP))}else scrollToY(el.getBoundingClientRect().top+scrollY)};
 d.querySelectorAll('a[href^="#"],a[href^="/portfolio/#"]').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.startsWith('/portfolio/#')&&location.pathname!=='/portfolio/')return;const t=d.getElementById(href.split('#')[1]);if(t&&!a.closest('.menu')){e.preventDefault();goTo(t)}}));
 if(location.hash){const t=d.getElementById(location.hash.slice(1));if(t)setTimeout(()=>{hst?scrollTo(0,hst.start+((t.closest('.panel')||t).offsetLeft<=hA?(t.closest('.panel')||t).offsetLeft:(t.closest('.panel')||t).offsetLeft+hP)):t.scrollIntoView()},300)}
+// wheel: step hero -> Chapter I -> work, then free scroll
+const stopY=id=>{const p=d.getElementById(id);if(!p||!hst)return 0;const L=p.offsetLeft;return hst.start+(L<=hA?L:L+hP)};let stepT=null,stepLock=0;
+d.addEventListener('wheel',e=>{if(!hst||e.ctrlKey)return;const stops=[hst.start,stopY('intro'),stopY('work')];const cur=stepT!=null&&Date.now()<stepLock?stepT:(lenis?lenis.targetScroll:scrollY);const down=e.deltaY>0;
+  if(down?cur>=stops[2]-2:cur>stops[2]+2)return;if(!down&&cur<=stops[0]+2)return;e.preventDefault();e.stopImmediatePropagation();
+  let t=down?stops.find(y=>y>cur+2):[...stops].reverse().find(y=>y<cur-2);if(t==null)return;stepT=t;stepLock=Date.now()+1100;lenis?lenis.scrollTo(t,{duration:1}):scrollTo({top:t,behavior:'smooth'})},{passive:false,capture:true});
 // arrow keys move the horizontal story
 addEventListener('keydown',e=>{if(!hst||e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''))||d.querySelector('.menu[open]'))return;const k=e.key;if(k!=='ArrowRight'&&k!=='ArrowLeft')return;if(scrollY<hst.start-2||scrollY>hst.end+2)return;e.preventDefault();const cur=lenis?lenis.targetScroll:scrollY;scrollToY(Math.max(hst.start,Math.min(hst.end,cur+(k==='ArrowRight'?1:-1)*innerWidth*.8)))});
 // rail: colour follows the panel under it, progress bar

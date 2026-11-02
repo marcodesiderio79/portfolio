@@ -38,5 +38,3 @@ High traffic and multiple markets. Without a shared system, every new client wou
 
 **Governance.** Clear rules and brand values so themes stayed coherent without fragmenting the core system.
 
-## Outcome
-One design system behind the white-label platform.

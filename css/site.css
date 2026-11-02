@@ -406,3 +406,4 @@ body[data-tone="light"] .rail{--rt:var(--c-ink);--rl:var(--c-line-l)}
 
 .cover{background:var(--c-ink,#1a1a1a);color:var(--c-paper,#f3eee4)!important;justify-content:center;align-items:flex-start}.cover .ph__name{font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:-.01em;font-weight:400}.cover .ph__note{font-variant:small-caps;text-transform:lowercase;letter-spacing:.08em;font-size:14px;opacity:.8}
 .hero__work{margin-top:16px}
+@media (min-width:768px){.hero .hero__scroll{display:none!important}.hero>.hero__work{display:block;position:absolute!important;right:var(--gx);bottom:var(--vg);margin:0;z-index:3;font-family:var(--f-display);text-transform:uppercase;font-size:max(20px,calc(var(--u) * 3.2));line-height:1}.hero__work a{color:inherit}}
