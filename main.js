@@ -84,7 +84,7 @@ if(mb&&dl){dl.querySelectorAll('.ln>span').forEach((s,i)=>s.style.setProperty('-
 const wl=d.querySelector('.worklist');
 if(wl){const imgs=[...d.querySelectorAll('.ch2__img')],idle=d.querySelector('.ch2__idle'),lis=[...wl.querySelectorAll('li')];let z=1,cur=-1;
   const on=li=>{if(!desk.matches)return;wl.classList.add('has-hover');lis.forEach(x=>x.classList.toggle('is-hover',x===li));const i=+li.dataset.i;if(i===cur)return;cur=i;const im=imgs[i];im.style.zIndex=++z;im.style.transition='none';im.classList.remove('is-on');void im.offsetWidth;im.style.transition='';im.classList.add('is-on');if(idle)idle.style.opacity=0};
-  const off=()=>{wl.classList.remove('has-hover');lis.forEach(x=>x.classList.remove('is-hover'));imgs.forEach(i=>i.classList.remove('is-on'));cur=-1;if(idle)idle.style.opacity=''};
+  const off=()=>{wl.classList.remove('has-hover');lis.forEach(x=>x.classList.remove('is-hover'));imgs.forEach((im,k)=>im.classList.toggle('is-on',k===0));cur=-1;if(idle)idle.style.opacity=''};
   lis.forEach(li=>{li.addEventListener('pointerenter',()=>on(li));li.querySelector('a').addEventListener('focus',()=>on(li))});
   wl.addEventListener('pointerleave',off);wl.addEventListener('focusout',e=>{if(!wl.contains(e.relatedTarget))off()})}
 // experience list: dim others, reveal role card
