@@ -22,7 +22,7 @@ if(hero){const base=hero.querySelector('.hero__base');
   if(h.classList.contains('loader-on')&&G){lenis&&lenis.stop();
     const strip=hero.querySelector('.hero__strip'),yr=hero.querySelector('.hero__yr'),n=strip.children.length;
     G.set(base,{scaleX:0,height:6});
-    const tl=G.timeline({onComplete:()=>{h.classList.remove('loader-on');try{sessionStorage.setItem('md-intro','1')}catch(e){}lenis&&lenis.start()}});
+    const tl=G.timeline({paused:true,onComplete:()=>{h.classList.remove('loader-on');try{sessionStorage.setItem('md-intro','1')}catch(e){}lenis&&lenis.start()}});
     tl.from(yr,{yPercent:100,duration:.8,ease:'power3.out'})
       .to(strip,{yPercent:-100*(n-1)/n,duration:2.6,ease:'power4.inOut'})
       .to(base,{scaleX:1,duration:2.6,ease:'power4.inOut'},'<')
@@ -30,6 +30,9 @@ if(hero){const base=hero.querySelector('.hero__base');
       .call(heroIn,null,'-=0.2')
       .to(base,{height:'100%',duration:1.1,ease:'power2.inOut'},'<')
       .from('.rail',{opacity:0,duration:1.6,ease:'power3.out'},'<');
+    tl.timeScale(tl.duration()/1.2).play();try{sessionStorage.setItem('md-intro','1')}catch(e){}
+    const skip=()=>{['click','wheel','keydown','touchstart','scroll'].forEach(ev=>removeEventListener(ev,skip));if(tl.progress()<1)tl.progress(1)};
+    ['click','wheel','keydown','touchstart','scroll'].forEach(ev=>addEventListener(ev,skip,{passive:true}));
   }else{h.classList.remove('loader-on');setTimeout(heroIn,anim?120:0)}}
 // horizontal story
 const story=d.getElementById('story'),track=d.getElementById('track');let hst=null,hA=0,hP=0;
@@ -37,7 +40,7 @@ if(story&&G&&ST){const mm=G.matchMedia();
   const tw=d.getElementById('thework'),col=tw.querySelector('.thework__collage'),grid=tw.querySelector('.thework__grid'),the=tw.querySelector('.thework__the'),wk=tw.querySelector('.thework__work');
   mm.add('(min-width: 768px)',()=>{h.classList.add('hs');track.classList.add('is-h');let tl;
     const build=()=>{let p=null;if(hst){p=hst.progress;hst.kill(true);tl.kill();G.set([track,col,the,wk,grid],{clearProps:'transform,clipPath'})}
-      const A=tw.offsetLeft,M=track.scrollWidth-innerWidth,P=rm?0:Math.round(innerHeight*1.3);hA=A;hP=P;
+      const A=tw.offsetLeft,M=track.scrollWidth-innerWidth,P=rm?0:Math.round(innerHeight*.6);hA=A;hP=P;
       tl=G.timeline({defaults:{ease:'none'}});tl.to(track,{x:-A,duration:A});
       if(P)tl.fromTo(col,{clipPath:'inset(42% 41.4% 42% 41.4%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:P})
         .fromTo(the,{x:0},{x:-innerWidth*.5,duration:P},'<').fromTo(wk,{x:0},{x:innerWidth*.5,duration:P},'<').fromTo(grid,{xPercent:0},{xPercent:-7,duration:P},'<');
@@ -54,6 +57,8 @@ if(story&&G&&ST){const mm=G.matchMedia();
 const goTo=el=>{if(!el)return;if(hst&&story.contains(el)){const p=el.closest('.panel')||el;const L=p.offsetLeft;scrollToY(hst.start+(L<=hA?L:L+hP))}else scrollToY(el.getBoundingClientRect().top+scrollY)};
 d.querySelectorAll('a[href^="#"],a[href^="/portfolio/#"]').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.startsWith('/portfolio/#')&&location.pathname!=='/portfolio/')return;const t=d.getElementById(href.split('#')[1]);if(t&&!a.closest('.menu')){e.preventDefault();goTo(t)}}));
 if(location.hash){const t=d.getElementById(location.hash.slice(1));if(t)setTimeout(()=>{hst?scrollTo(0,hst.start+((t.closest('.panel')||t).offsetLeft<=hA?(t.closest('.panel')||t).offsetLeft:(t.closest('.panel')||t).offsetLeft+hP)):t.scrollIntoView()},300)}
+// arrow keys move the horizontal story
+addEventListener('keydown',e=>{if(!hst||e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''))||d.querySelector('.menu[open]'))return;const k=e.key;if(k!=='ArrowRight'&&k!=='ArrowLeft')return;if(scrollY<hst.start-2||scrollY>hst.end+2)return;e.preventDefault();const cur=lenis?lenis.targetScroll:scrollY;scrollToY(Math.max(hst.start,Math.min(hst.end,cur+(k==='ArrowRight'?1:-1)*innerWidth*.8)))});
 // rail: colour follows the panel under it, progress bar
 const rail=d.querySelector('.rail'),bar=d.querySelector('.rail__bar');let raf=0;
 function tick(){if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const x=desk.matches?22:innerWidth/2,y=desk.matches?innerHeight/2:28;

@@ -16,7 +16,7 @@ team: Me and another Product Designer
 timeline: 2025
 scope: Design system, research, UI design
 platforms: Responsive web
-results: ["Faster access to fund data for advisers", "Less manual content work for the Artemis team", "New pages without design or development support"]
+results: ["Fund pages built from the same shared system, so most of the work was reuse, not reinvention. The system now serves five UK asset managers.", "Faster access to fund data for advisers", "Less manual content work for the Artemis team", "New pages without design or development support"]
 learnedTitle: What I learned
 differently: "Clarity beats creativity when the content is financial data. Strong systems matter more than individual screens. And scale is much cheaper to plan on day one than to bolt on in month six."
 ---

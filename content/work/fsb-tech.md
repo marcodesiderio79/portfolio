@@ -14,7 +14,7 @@ team: Me and another Product Designer, with engineering
 timeline: Jan 2021 to Aug 2023 · In-house
 scope: Design system, research, UI design
 platforms: Web and native mobile
-results: ["Web and native mobile from the same foundation."]
+results: ["One design system and token set behind a white-label platform, with themes for each brand variant that didn't fragment the core. It also included accessibility improvements toward WCAG 2.1 AA.", "Web and native mobile from the same foundation."]
 differently: "I'd write the governance rules before the second brand arrived, not after. Rules are easy to agree when everyone's still being polite."
 ---
 ## Problem

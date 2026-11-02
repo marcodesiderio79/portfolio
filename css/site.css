@@ -403,3 +403,6 @@ body[data-tone="light"] .rail{--rt:var(--c-ink);--rl:var(--c-line-l)}
 .nf{min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:28px;padding:calc(var(--top) + 40px) var(--gx) 40px calc(var(--rail) + var(--gx))}
 @media (min-width:768px){.nf{height:auto}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+.cover{background:var(--c-ink,#1a1a1a);color:var(--c-paper,#f3eee4)!important;justify-content:center;align-items:flex-start}.cover .ph__name{font-family:'Instrument Serif',serif;text-transform:none;letter-spacing:-.01em;font-weight:400}.cover .ph__note{font-variant:small-caps;text-transform:lowercase;letter-spacing:.08em;font-size:14px;opacity:.8}
+.hero__work{margin-top:16px}
