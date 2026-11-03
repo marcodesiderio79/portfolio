@@ -40,7 +40,7 @@ if(story&&G&&ST){const mm=G.matchMedia();
   const tw=d.getElementById('thework'),col=tw.querySelector('.thework__collage'),grid=tw.querySelector('.thework__grid'),the=tw.querySelector('.thework__the'),wk=tw.querySelector('.thework__work');
   mm.add('(min-width: 768px)',()=>{h.classList.add('hs');track.classList.add('is-h');let tl;
     const build=()=>{let p=null;if(hst){p=hst.progress;hst.kill(true);tl.kill();G.set([track,col,the,wk,grid],{clearProps:'transform,clipPath'})}
-      const A=tw.offsetLeft,M=track.scrollWidth-innerWidth,P=rm?0:Math.round(innerHeight*.6);hA=A;hP=P;
+      const A=tw.offsetLeft,M=track.scrollWidth-innerWidth,P=rm?0:Math.round(innerHeight*.2);hA=A;hP=P;
       tl=G.timeline({defaults:{ease:'none'}});tl.to(track,{x:-A,duration:A});
       if(P)tl.fromTo(col,{clipPath:'inset(42% 41.4% 42% 41.4%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:P})
         .fromTo(the,{x:0},{x:-innerWidth*.5,duration:P},'<').fromTo(wk,{x:0},{x:innerWidth*.5,duration:P},'<').fromTo(grid,{xPercent:0},{xPercent:-7,duration:P},'<');
@@ -75,6 +75,8 @@ if(mb&&dl){dl.querySelectorAll('.ln>span').forEach((s,i)=>s.style.setProperty('-
   dl.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');const id=href.includes('#')?href.split('#')[1]:null;
     if(href==='/portfolio/'&&location.pathname==='/portfolio/'){e.preventDefault();close(()=>scrollToY(0));return}
     if(id&&(href.startsWith('#')||location.pathname==='/portfolio/')){const t=d.getElementById(id);if(t){e.preventDefault();close(()=>goTo(t))}}}))}
+// preview videos: poster only under reduced motion
+if(rm)d.querySelectorAll('.ch2__img video').forEach(v=>{v.removeAttribute('autoplay');v.pause();v.preload='none'});
 // selected work: dim others, arrow, hover rule, preview scales in
 const wl=d.querySelector('.worklist');
 if(wl){const imgs=[...d.querySelectorAll('.ch2__img')],idle=d.querySelector('.ch2__idle'),lis=[...wl.querySelectorAll('li')];let z=1,cur=-1;
