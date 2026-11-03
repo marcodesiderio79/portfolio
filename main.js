@@ -75,6 +75,9 @@ if(mb&&dl){dl.querySelectorAll('.ln>span').forEach((s,i)=>s.style.setProperty('-
   dl.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');const id=href.includes('#')?href.split('#')[1]:null;
     if(href==='/portfolio/'&&location.pathname==='/portfolio/'){e.preventDefault();close(()=>scrollToY(0));return}
     if(id&&(href.startsWith('#')||location.pathname==='/portfolio/')){const t=d.getElementById(id);if(t){e.preventDefault();close(()=>goTo(t))}}}))}
+// case videos: lazy, muted loop; poster only under reduced motion
+(()=>{const vs=document.querySelectorAll('video.case__vid[data-src]');if(!vs.length||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const ld=v=>{if(v.dataset.on)return;v.dataset.on=1;const so=document.createElement('source');so.src=v.dataset.src;so.type='video/mp4';v.appendChild(so);v.preload='auto';v.autoplay=true;v.load()};
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){ld(v);const p=v.play();p&&p.catch(()=>{})}else if(v.dataset.on)v.pause()}),{rootMargin:'200px'});vs.forEach(v=>io.observe(v))})();
 // preview videos: poster only under reduced motion
 if(!rm&&desk.matches)d.querySelectorAll('.ch2__img video[data-src]').forEach(v=>{const so=d.createElement('source');so.src=v.dataset.src;so.type='video/mp4';v.appendChild(so);v.preload='auto';v.autoplay=true;v.load();const pl=v.play();pl&&pl.catch(()=>{})});
 // selected work: dim others, arrow, hover rule, preview scales in
