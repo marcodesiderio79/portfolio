@@ -1,9 +1,9 @@
 /* Marco Desiderio portfolio v9. Theme tokens first: switch with <html data-theme="editorial|signal"> (or ?theme=signal to preview). */
-@font-face{font-family:"Instrument Serif";src:url("/portfolio/fonts/InstrumentSerif-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Instrument Serif";src:url("/portfolio/fonts/InstrumentSerif-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:"Inter";src:url("/portfolio/fonts/Inter-Var.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:"Archivo Expanded";src:url("/portfolio/fonts/Archivo-ExtraBold-Expanded.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("/portfolio/fonts/IBMPlexSans-Var-400-600.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url("/fonts/InstrumentSerif-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Serif";src:url("/fonts/InstrumentSerif-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Inter";src:url("/fonts/Inter-Var.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Archivo Expanded";src:url("/fonts/Archivo-ExtraBold-Expanded.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("/fonts/IBMPlexSans-Var-400-600.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
 
 :root,[data-theme="editorial"]{
   --f-display:"Instrument Serif","Times New Roman",Georgia,serif;

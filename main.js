@@ -55,7 +55,7 @@ if(story&&G&&ST){const mm=G.matchMedia();
 }
 // go to a section (maps horizontal position to scroll when pinned)
 const goTo=el=>{if(!el)return;if(hst&&story.contains(el)){const p=el.closest('.panel')||el;const L=p.offsetLeft;scrollToY(hst.start+(L<=hA?L:L+hP))}else scrollToY(el.getBoundingClientRect().top+scrollY)};
-d.querySelectorAll('a[href^="#"],a[href^="/portfolio/#"]').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.startsWith('/portfolio/#')&&location.pathname!=='/portfolio/')return;const t=d.getElementById(href.split('#')[1]);if(t&&!a.closest('.menu')){e.preventDefault();goTo(t)}}));
+d.querySelectorAll('a[href^="#"],a[href^="/#"]').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.startsWith('/#')&&location.pathname!=='/')return;const t=d.getElementById(href.split('#')[1]);if(t&&!a.closest('.menu')){e.preventDefault();goTo(t)}}));
 if(location.hash){const t=d.getElementById(location.hash.slice(1));if(t)setTimeout(()=>{hst?scrollTo(0,hst.start+((t.closest('.panel')||t).offsetLeft<=hA?(t.closest('.panel')||t).offsetLeft:(t.closest('.panel')||t).offsetLeft+hP)):t.scrollIntoView()},300)}
 // arrow keys move the horizontal story
 addEventListener('keydown',e=>{if(!hst||e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''))||d.querySelector('.menu[open]'))return;const k=e.key;if(k!=='ArrowRight'&&k!=='ArrowLeft')return;if(scrollY<hst.start-2||scrollY>hst.end+2)return;e.preventDefault();const cur=lenis?lenis.targetScroll:scrollY;scrollToY(Math.max(hst.start,Math.min(hst.end,cur+(k==='ArrowRight'?1:-1)*innerWidth*.8)))});
@@ -73,8 +73,8 @@ if(mb&&dl){dl.querySelectorAll('.ln>span').forEach((s,i)=>s.style.setProperty('-
   const close=cb=>{dl.classList.remove('is-open');mb.setAttribute('aria-expanded','false');setTimeout(()=>{dl.close();lenis&&lenis.start();typeof cb=='function'&&cb()},rm?0:700)};
   mb.addEventListener('click',open);mc.addEventListener('click',()=>close());dl.addEventListener('cancel',e=>{e.preventDefault();close()});
   dl.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{const href=a.getAttribute('href');const id=href.includes('#')?href.split('#')[1]:null;
-    if(href==='/portfolio/'&&location.pathname==='/portfolio/'){e.preventDefault();close(()=>scrollToY(0));return}
-    if(id&&(href.startsWith('#')||location.pathname==='/portfolio/')){const t=d.getElementById(id);if(t){e.preventDefault();close(()=>goTo(t))}}}))}
+    if(href==='/'&&location.pathname==='/'){e.preventDefault();close(()=>scrollToY(0));return}
+    if(id&&(href.startsWith('#')||location.pathname==='/')){const t=d.getElementById(id);if(t){e.preventDefault();close(()=>goTo(t))}}}))}
 // case videos: lazy, muted loop; poster only under reduced motion
 (()=>{const vs=document.querySelectorAll('video.case__vid[data-src]');if(!vs.length||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const ld=v=>{if(v.dataset.on)return;v.dataset.on=1;const so=document.createElement('source');so.src=v.dataset.src;so.type='video/mp4';v.appendChild(so);v.preload='auto';v.autoplay=true;v.load()};
 const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){ld(v);const p=v.play();p&&p.catch(()=>{})}else if(v.dataset.on)v.pause()}),{rootMargin:'200px'});vs.forEach(v=>io.observe(v))})();
