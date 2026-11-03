@@ -13,10 +13,10 @@ summary: A fund explorer and design system built on tokens, variables and reusab
 tileMeta: 2024 · Fund explorer
 frame: ink
 role: Senior Product Designer
-team: Me and another Product Designer
+team: Solo, from wireframes to UI
 timeline: 2024
 scope: Wireframes, concept, design system, UI design
-platforms: Responsive web
+platforms: Desktop and responsive web
 results: ["Built on the shared component system that now serves five UK asset managers. Once it was in place, component implementation got around 40% faster."]
 differently: "I'd set the token structure before designing a single screen. It's easier to lay the carpet before the furniture arrives."
 ---

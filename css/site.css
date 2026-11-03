@@ -503,3 +503,21 @@ html[data-theme="editorial"] .menu__panel{background:#F2A93B;color:#1F1A14;--c-c
 html[data-theme="editorial"] .menu__panel *{color:#1F1A14;border-color:#1F1A14}
 html[data-theme="editorial"] .menu__nav a{opacity:.7}
 html[data-theme="editorial"] .menu__nav a:hover,html[data-theme="editorial"] .menu__nav a:focus-visible,html[data-theme="editorial"] .menu__nav a[aria-current]{opacity:1}
+
+/* qa3 */
+.chapter{font-size:28px}
+@media (min-width:768px){.chapter{font-size:max(28px,calc(var(--u) * 4.2))}}
+@media (min-width:768px){
+ .ch2__preview{top:auto!important;bottom:calc(var(--vg) * .6)!important;transform:none!important}
+ .ch2__list{gap:calc(var(--u) * 1.6)}
+ .explist{display:flex;flex-direction:column;gap:calc(var(--u) * 1.6)}
+ .explist__card .explist__logo{margin:0!important;height:calc(var(--lh) * .9)!important;max-width:100%;object-fit:contain;object-position:left bottom}
+}
+.explist{list-style:none}
+@media (max-width:767px){.explist__card{display:none}.explist li{padding:16px 0}}
+.case__nextlink{font-size:28px;transition:color .3s}
+@media (min-width:768px){.case__nextlink{font-size:max(24px,calc(var(--u) * 2.8))}}
+.case__nextlink .arr{transition:transform .4s var(--ease)}
+.case__nextlink:hover .arr,.case__nextlink:focus-visible .arr{transform:translateX(.35em)}
+.case__nextlink:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.15em}
+@media (prefers-reduced-motion:reduce){.case__nextlink:hover .arr,.case__nextlink:focus-visible .arr{transform:none}}

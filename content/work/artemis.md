@@ -12,10 +12,10 @@ summary: Fund pages rebuilt as data-led hubs, on a reusable component system the
 tileMeta: 2025 · Fund pages
 frame: ink
 role: Senior Product Designer
-team: Me and another Product Designer
+team: Three senior designers
 timeline: 2025
-scope: Design system, research, UI design
-platforms: Responsive web
+scope: "The whole website: design system, research, UI design"
+platforms: Desktop and responsive web
 results: ["Fund pages built from the same shared system, so most of the work was reuse, not reinvention. The system now serves five UK asset managers.", "Faster access to fund data for advisers", "Less manual content work for the Artemis team", "New pages without design or development support"]
 learnedTitle: What I learned
 differently: "Clarity beats creativity when the content is financial data. Strong systems matter more than individual screens. And scale is much cheaper to plan on day one than to bolt on in month six."

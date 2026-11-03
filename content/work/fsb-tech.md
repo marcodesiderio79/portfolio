@@ -10,9 +10,9 @@ summary: Regulated, high-traffic consumer product work. A design system built fr
 tileMeta: Regulated consumer product
 frame: ink
 role: Senior Product Designer
-team: Me and another Product Designer, with engineering
-timeline: Jan 2021 to Aug 2023 · In-house
-scope: Design system, research, UI design
+team: A lead designer, a senior designer, a graphic designer and me
+timeline: Jan 2021 to Aug 2023
+scope: Design system, UI design
 platforms: Web and native mobile
 results: ["By the end, the system held 3k+ components, 500+ tokens as Figma variables, 37 text styles and 68 UI pages, all behind one white-label platform. It also included accessibility improvements toward WCAG 2.1 AA.", "Web and native mobile from the same foundation."]
 differently: "I'd write the governance rules before the second brand arrived, not after. Rules are easy to agree when everyone's still being polite."
@@ -27,7 +27,7 @@ Clients included Gamesys, JenningsBet, Fitzdares, QuinnBet, BetGoodwin and Power
 High traffic and multiple markets. Without a shared system, every new client would mean another fork and another place for bugs to hide.
 
 ## Approach
-**Core journeys.** I led research and design for onboarding and account management.
+**Core journeys.** I led design for onboarding and account management.
 
 **Design-to-code.** Close work with engineering, reviewing implementations and flagging drift early in the cycle.
 

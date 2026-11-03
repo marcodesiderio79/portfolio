@@ -8,15 +8,15 @@ company: Royal London Asset Management
 year: 2025
 type: Fund platform
 builtAt: Huguenot
-tagline: One fund platform, two audiences, 40+ reusable components. Delivered in 3 months.
+tagline: One fund platform, 40+ reusable components. Delivered in 3 months.
 summary: A fund platform with 40+ components and Intermediary and Individual themes, delivered in three months.
 tileMeta: 2025 · Fund platform
 frame: cobalt
 role: Senior Product Designer
-team: Me and another Product Designer, with engineering
+team: Three senior designers
 timeline: 2025 · 3 months
 scope: Design system, research, UI design
-platforms: Responsive web
+platforms: Desktop and responsive web
 tileImage: { src: /images/work/royal-london/workcard_1200x1500.webp, width: 1200, height: 1500, alt: "" }
 heroImage: { src: /images/work/royal-london/hero_2880x1620.webp, width: 2880, height: 1620, alt: "Three Royal London fund pages: fund list, fund performance and fund detail, shown as responsive web screens" }
 heroCaption: Fund list, performance and fund detail. Responsive web.
