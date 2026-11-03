@@ -521,3 +521,4 @@ html[data-theme="editorial"] .menu__nav a:hover,html[data-theme="editorial"] .me
 .case__nextlink:hover .arr,.case__nextlink:focus-visible .arr{transform:translateX(.35em)}
 .case__nextlink:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.15em}
 @media (prefers-reduced-motion:reduce){.case__nextlink:hover .arr,.case__nextlink:focus-visible .arr{transform:none}}
+.ch1__portrait img,.about__portrait img{-webkit-mask-image:none!important;mask-image:none!important}
