@@ -450,3 +450,26 @@ body[data-tone="light"] .rail{--rt:var(--c-ink);--rl:var(--c-line-l)}
 .ch1__portrait{margin-bottom:calc(var(--vg) * -1)}
 @media (min-width:768px){.ch1__portrait{margin-bottom:0}.about{padding-bottom:0}.about__portrait{align-self:end;margin-bottom:calc(var(--u) * -6)}.about__career{padding-bottom:calc(var(--vg) * 2)}}
 @media (min-width:768px){.thework__w.thework__the{position:absolute;right:calc(50% + 11vw);top:50%;margin-top:-.5em}.thework__w.thework__work{position:absolute;left:calc(50% + 11vw);top:50%;margin-top:-.5em}}
+/* v14 lightbox */
+.lb-open{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;color:inherit}
+.lb-open:focus-visible{outline:2px solid var(--c-ink);outline-offset:3px}
+.case__gi .lb-open,.case__gi .lb-open picture{height:100%}
+.lb-lock,.lb-lock body{overflow:hidden}
+.lb{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s ease}
+.lb.is-open{opacity:1}
+.lb__bg{position:absolute;inset:0;background:color-mix(in srgb,var(--c-deep) 94%,transparent)}
+.lb__fig{position:relative;margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:calc(100vw - 32px);pointer-events:none}
+.lb__fig img{display:block;max-width:calc(100vw - 32px);max-height:calc(100vh - 140px);max-height:calc(100dvh - 140px);width:auto;height:auto;object-fit:contain;pointer-events:auto}
+.lb__cap{display:flex;gap:16px;align-items:baseline;justify-content:space-between;width:100%;color:var(--c-cream);font-size:14px;line-height:1.4}
+.lb__n{color:var(--c-muted-d);white-space:nowrap}
+.lb__btn{position:absolute;z-index:2;border:1px solid var(--c-line-d);background:var(--c-deep);color:var(--c-cream);font:inherit;font-size:14px;min-width:44px;min-height:44px;padding:0 14px;cursor:pointer}
+.lb__btn:hover,.lb__btn:focus-visible{border-color:var(--c-cream);outline:none}
+.lb__close{top:16px;right:16px;text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.lb__prev,.lb__next{top:50%;transform:translateY(-50%);font-size:18px}
+.lb__prev{left:16px}.lb__next{right:16px}
+@media (max-width:767px){.lb__prev,.lb__next{top:auto;bottom:16px;transform:none}.lb__fig img{max-height:calc(100dvh - 180px)}}
+@media (min-width:768px){.lb__fig,.lb__fig img{max-width:calc(100vw - 180px)}}
+@media (prefers-reduced-motion:reduce){.lb{transition:none}}
+.lb[hidden]{display:none}
+.wipe::before{pointer-events:none}
+.lb__bg{background:var(--c-deep)}

@@ -9,7 +9,7 @@ d.querySelectorAll('[data-rise],[data-split],.worklist,.explist,.ch1__stats').fo
 d.querySelectorAll('.ch1__stats li').forEach((li,i)=>li.querySelector('.ln>span')?.style.setProperty('--d',i*110));
 // smooth scroll
 let lenis=null;
-if(!rm&&window.Lenis){lenis=new Lenis({lerp:.1,autoRaf:!G});if(G){lenis.on('scroll',()=>ST&&ST.update());G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}}
+if(!rm&&window.Lenis){lenis=new Lenis({lerp:.1,autoRaf:!G});window.__lenis=lenis;if(G){lenis.on('scroll',()=>ST&&ST.update());G.ticker.add(t=>lenis.raf(t*1000));G.ticker.lagSmoothing(0)}}
 const scrollToY=y=>lenis?lenis.scrollTo(y,{duration:1.4}):scrollTo({top:y,behavior:rm?'auto':'smooth'});
 // reveals
 const targets=[...d.querySelectorAll('[data-rise],[data-split],.wipe,.worklist,.explist')].filter(e=>!e.closest('.hero'));
@@ -99,4 +99,22 @@ if(ck){const f=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour:'2
   const u=()=>{const n=new Date();ck.textContent=f.format(n);if(o&&tz){const p=o.formatToParts(n).find(x=>x.type==='timeZoneName');if(p)tz.textContent=p.value==='GMT'?'GMT':p.value}};u();setInterval(u,15000)}
 // copy email
 const cpb=d.getElementById('copy');if(cpb){const st=d.getElementById('copyLbl');let t;if(!navigator.clipboard)cpb.hidden=true;cpb.addEventListener('click',()=>navigator.clipboard.writeText(cpb.dataset.email).then(()=>{st.textContent='Copied';clearTimeout(t);t=setTimeout(()=>st.textContent='',2000)}).catch(()=>{}))}
+})();
+// v14 lightbox for case images
+(()=>{const d=document,flow=d.querySelector('.case__flow');if(!flow)return;
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const figs=[...flow.querySelectorAll('figure')].filter(f=>f.querySelector('img'));if(!figs.length)return;
+const items=figs.map((f,i)=>{const img=f.querySelector('img'),pic=f.querySelector('picture')||img;const b=d.createElement('button');b.type='button';b.className='lb-open';b.setAttribute('aria-label','Open image: '+(img.alt||'screen '+(i+1)));pic.parentNode.insertBefore(b,pic);b.appendChild(pic);b.addEventListener('click',()=>open(i));const av=f.querySelector('source[type="image/avif"]');return{img,src:img.getAttribute('src'),avif:av&&av.getAttribute('srcset'),alt:img.alt,btn:b}});
+const lb=d.createElement('div');lb.className='lb';lb.hidden=true;lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Image viewer');
+lb.innerHTML='<div class="lb__bg" data-close></div><figure class="lb__fig"><picture><source type="image/avif"><img alt=""></picture><figcaption class="lb__cap"><span class="lb__txt"></span><span class="lb__n micro"></span></figcaption></figure><button type="button" class="lb__btn lb__close" aria-label="Close">Close</button><button type="button" class="lb__btn lb__prev" aria-label="Previous image">←</button><button type="button" class="lb__btn lb__next" aria-label="Next image">→</button>';
+d.body.appendChild(lb);const src=lb.querySelector('source'),im=lb.querySelector('img'),txt=lb.querySelector('.lb__txt'),num=lb.querySelector('.lb__n'),cls=lb.querySelector('.lb__close'),prv=lb.querySelector('.lb__prev'),nxt=lb.querySelector('.lb__next');
+if(items.length<2){prv.hidden=nxt.hidden=true}
+let cur=-1,opener=null,t;const L=()=>window.__lenis;
+const show=i=>{cur=(i+items.length)%items.length;const it=items[cur];if(it.avif)src.setAttribute('srcset',it.avif);else src.removeAttribute('srcset');im.src=it.src;im.alt=it.alt;txt.textContent=it.alt;num.textContent=(cur+1)+' / '+items.length};
+const open=i=>{opener=d.activeElement;show(i);clearTimeout(t);lb.hidden=false;d.documentElement.classList.add('lb-lock');L()&&L().stop();requestAnimationFrame(()=>requestAnimationFrame(()=>lb.classList.add('is-open')));cls.focus()};
+const close=()=>{if(lb.hidden)return;lb.classList.remove('is-open');d.documentElement.classList.remove('lb-lock');L()&&L().start();t=setTimeout(()=>{lb.hidden=true},rm?0:200);opener&&opener.focus()};
+cls.onclick=close;prv.onclick=()=>show(cur-1);nxt.onclick=()=>show(cur+1);
+lb.addEventListener('click',e=>{if(e.target.hasAttribute('data-close')||e.target===lb||e.target.classList.contains('lb__fig'))close()});
+lb.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close()}else if(e.key==='ArrowRight'){e.preventDefault();show(cur+1)}else if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1)}else if(e.key==='Tab'){const f=[cls,prv,nxt].filter(x=>!x.hidden);const a=f.indexOf(d.activeElement);e.preventDefault();f[(a+(e.shiftKey?-1:1)+f.length)%f.length].focus()}});
+let sx=null;lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50&&items.length>1)show(cur+(dx<0?1:-1))});
 })();
