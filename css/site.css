@@ -476,30 +476,30 @@ body[data-tone="light"] .rail{--rt:var(--c-ink);--rl:var(--c-line-l)}
 
 /* ===== Amber palette (Art, 3 Nov 2026): colours swapped 1:1, roles unchanged; fonts unchanged (Instrument Serif + Inter) ===== */
 html[data-theme="editorial"]{
-  --c-hero:#0B0D10;--c-dark:#0B0D10;--c-deep:#0B0D10;--c-raise:#1A1D22;
-  --c-paper:#F6F1E7;--c-stone:#F6F1E7;--c-cream:#F6F1E7;--c-ink:#0B0D10;
+  --c-hero:#1F1A14;--c-dark:#1F1A14;--c-deep:#1F1A14;--c-raise:#1A1D22;
+  --c-paper:#F6F1E7;--c-stone:#F6F1E7;--c-cream:#F6F1E7;--c-ink:#1F1A14;
   --c-line-d:#3A3F47;--c-line-l:#E0A33A;--c-muted-l:#3A3F47;--c-muted-d:#BDBDBD;
   --c-ph-l:#EDEAE4;--c-ph-d:#1A1D22;
-  --c-accent:#F2A93B;--c-on-accent:#0B0D10}
-html[data-theme="editorial"] mark{background:#F2A93B;color:#0B0D10;font-style:italic;padding:0 .08em 0 .14em;margin-left:-.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  --c-accent:#F2A93B;--c-on-accent:#1F1A14}
+html[data-theme="editorial"] mark{background:#F2A93B;color:#1F1A14;font-style:italic;padding:0 .08em 0 .14em;margin-left:-.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 /* amber v3: hero background amber, dark text */
 html[data-theme="editorial"]{--c-hero:#F2A93B}
-html[data-theme="editorial"] .panel--hero{background:#F2A93B;color:#0B0D10}
-html[data-theme="editorial"] .panel--hero *{color:#0B0D10;border-color:#0B0D10}
-html[data-theme="editorial"] .panel--hero mark{background:#0B0D10;color:#F2A93B}
+html[data-theme="editorial"] .panel--hero{background:#F2A93B;color:#1F1A14}
+html[data-theme="editorial"] .panel--hero *{color:#1F1A14;border-color:#1F1A14}
+html[data-theme="editorial"] .panel--hero mark{background:#1F1A14;color:#F2A93B}
 html[data-theme="editorial"] .hero__base{background:#F2A93B}
 /* amber v4: hero, What I do, Let's talk on amber with black text */
-html[data-theme="editorial"] .panel--dark,html[data-theme="editorial"] .foot{background:#F2A93B;color:#0B0D10}
-html[data-theme="editorial"] .ch3 *,html[data-theme="editorial"] .foot *{color:#0B0D10;border-color:#0B0D10}
-html[data-theme="editorial"] .ch3 mark,html[data-theme="editorial"] .foot mark{background:#0B0D10;color:#F2A93B}
+html[data-theme="editorial"] .panel--dark,html[data-theme="editorial"] .foot{background:#F2A93B;color:#1F1A14}
+html[data-theme="editorial"] .ch3 *,html[data-theme="editorial"] .foot *{color:#1F1A14;border-color:#1F1A14}
+html[data-theme="editorial"] .ch3 mark,html[data-theme="editorial"] .foot mark{background:#1F1A14;color:#F2A93B}
 /* amber v5: every dark panel becomes amber with black text */
-html[data-theme="editorial"] .panel--hero,html[data-theme="editorial"] .panel--dark,html[data-theme="editorial"] .panel--deep{--c-cream:#0B0D10;--c-hero:#F2A93B;--c-dark:#F2A93B;--c-deep:#F2A93B;--c-raise:#E89B2A;--c-ph-d:#E89B2A;--c-muted-d:#0B0D10;--c-line-d:#0B0D10;background:#F2A93B!important;color:#0B0D10}
-html[data-theme="editorial"] .rail{--rt:#0B0D10!important;--rl:#0B0D10!important}
+html[data-theme="editorial"] .panel--hero,html[data-theme="editorial"] .panel--dark,html[data-theme="editorial"] .panel--deep{--c-cream:#1F1A14;--c-hero:#F2A93B;--c-dark:#F2A93B;--c-deep:#F2A93B;--c-raise:#E89B2A;--c-ph-d:#E89B2A;--c-muted-d:#1F1A14;--c-line-d:#1F1A14;background:#F2A93B!important;color:#1F1A14}
+html[data-theme="editorial"] .rail{--rt:#1F1A14!important;--rl:#1F1A14!important}
 /* amber v6: burger and open menu amber with black */
-html[data-theme="editorial"] .burger{background:#F2A93B;color:#0B0D10}
-html[data-theme="editorial"] .burger i{background:#0B0D10}
-html[data-theme="editorial"] .menu{color:#0B0D10}
-html[data-theme="editorial"] .menu__panel{background:#F2A93B;color:#0B0D10;--c-cream:#0B0D10;--c-line-d:#0B0D10}
-html[data-theme="editorial"] .menu__panel *{color:#0B0D10;border-color:#0B0D10}
+html[data-theme="editorial"] .burger{background:#F2A93B;color:#1F1A14}
+html[data-theme="editorial"] .burger i{background:#1F1A14}
+html[data-theme="editorial"] .menu{color:#1F1A14}
+html[data-theme="editorial"] .menu__panel{background:#F2A93B;color:#1F1A14;--c-cream:#1F1A14;--c-line-d:#1F1A14}
+html[data-theme="editorial"] .menu__panel *{color:#1F1A14;border-color:#1F1A14}
 html[data-theme="editorial"] .menu__nav a{opacity:.7}
 html[data-theme="editorial"] .menu__nav a:hover,html[data-theme="editorial"] .menu__nav a:focus-visible,html[data-theme="editorial"] .menu__nav a[aria-current]{opacity:1}
