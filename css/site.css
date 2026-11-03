@@ -488,3 +488,10 @@ html[data-theme="editorial"] .panel--hero{background:#F2A93B;color:#0B0D10}
 html[data-theme="editorial"] .panel--hero *{color:#0B0D10;border-color:#0B0D10}
 html[data-theme="editorial"] .panel--hero mark{background:#0B0D10;color:#F2A93B}
 html[data-theme="editorial"] .hero__base{background:#F2A93B}
+/* amber v4: hero, What I do, Let's talk on amber with black text */
+html[data-theme="editorial"] .panel--dark,html[data-theme="editorial"] .foot{background:#F2A93B;color:#0B0D10}
+html[data-theme="editorial"] .ch3 *,html[data-theme="editorial"] .foot *{color:#0B0D10;border-color:#0B0D10}
+html[data-theme="editorial"] .ch3 mark,html[data-theme="editorial"] .foot mark{background:#0B0D10;color:#F2A93B}
+/* amber v5: every dark panel becomes amber with black text */
+html[data-theme="editorial"] .panel--hero,html[data-theme="editorial"] .panel--dark,html[data-theme="editorial"] .panel--deep{--c-cream:#0B0D10;--c-hero:#F2A93B;--c-dark:#F2A93B;--c-deep:#F2A93B;--c-raise:#E89B2A;--c-ph-d:#E89B2A;--c-muted-d:#0B0D10;--c-line-d:#0B0D10;background:#F2A93B!important;color:#0B0D10}
+html[data-theme="editorial"] .rail{--rt:#0B0D10!important;--rl:#0B0D10!important}
