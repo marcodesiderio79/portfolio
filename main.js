@@ -76,7 +76,7 @@ if(mb&&dl){dl.querySelectorAll('.ln>span').forEach((s,i)=>s.style.setProperty('-
     if(href==='/portfolio/'&&location.pathname==='/portfolio/'){e.preventDefault();close(()=>scrollToY(0));return}
     if(id&&(href.startsWith('#')||location.pathname==='/portfolio/')){const t=d.getElementById(id);if(t){e.preventDefault();close(()=>goTo(t))}}}))}
 // preview videos: poster only under reduced motion
-if(rm)d.querySelectorAll('.ch2__img video').forEach(v=>{v.removeAttribute('autoplay');v.pause();v.preload='none'});
+if(!rm&&desk.matches)d.querySelectorAll('.ch2__img video[data-src]').forEach(v=>{const so=d.createElement('source');so.src=v.dataset.src;so.type='video/mp4';v.appendChild(so);v.preload='auto';v.autoplay=true;v.load();const pl=v.play();pl&&pl.catch(()=>{})});
 // selected work: dim others, arrow, hover rule, preview scales in
 const wl=d.querySelector('.worklist');
 if(wl){const imgs=[...d.querySelectorAll('.ch2__img')],idle=d.querySelector('.ch2__idle'),lis=[...wl.querySelectorAll('li')];let z=1,cur=-1;
